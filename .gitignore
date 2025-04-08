@@ -1,0 +1,25 @@
+# Environment variables
+.env
+
+# Docker
+.dockerignore
+Dockerfile
+docker-compose.yml
+
+# n8n data (if stored locally within the project - should ideally be outside)
+# n8n-data/
+# .n8n/
+
+# Node modules (if any local node development)
+node_modules/
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor directories
+.vscode/
+.idea/ 
