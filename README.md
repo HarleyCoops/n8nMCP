@@ -86,4 +86,94 @@ Instead of setting environment variables directly in Docker Desktop, you can use
 ## Stopping and Starting
 
 *   **Stop:** In Docker Desktop > Containers, click the stop icon next to your `n8n-instance`.
-*   **Start:** In Docker Desktop > Containers, click the start icon next to your `n8n-instance`. Your data will persist because of the volume mapping. 
+*   **Start:** In Docker Desktop > Containers, click the start icon next to your `n8n-instance`. Your data will persist because of the volume mapping.
+
+---
+
+## Advanced: Integrate MCP and AI Agents in n8n
+
+This section explains how to supercharge your n8n workflows with AI agents and the Model Context Protocol (MCP), enabling dynamic tool use and powerful automation.
+
+### 1. Enable Community Nodes
+
+- When configuring your container, add an environment variable:
+  - **Name:** `N8N_COMMUNITY_NODES_ENABLED`
+  - **Value:** `true`
+- This allows installing community-contributed nodes like MCP.
+
+### 2. Access n8n and Create an Account
+
+- Open `http://localhost:5678` in your browser.
+- Sign up with your email and password.
+- Log in to access the n8n editor.
+
+### 3. Install MCP Community Nodes
+
+- In n8n, navigate to **Settings** > **Community Nodes**.
+- Search for:
+  - `n8n-nodes-mcp` (or similar MCP-related nodes).
+- Click **Install** and wait for installation to complete.
+
+### 4. Create a New Workflow
+
+- Click **New Workflow**.
+- Name it, e.g., `MCP Server Agent`.
+
+### 5. Add a Chat Trigger Node
+
+- Add the **Chat Trigger** node to start the workflow based on user input.
+
+### 6. Add an AI Agent Node
+
+- Add the **AI Agent** node connected after the Chat Trigger.
+- Configure it to use **OpenAI Chat** model:
+  - Create a new credential with your OpenAI API key.
+  - Select model (e.g., `gpt-4o-mini`).
+- Optionally, add a **Simple Memory** node to maintain conversation context.
+
+### 7. Integrate MCP Client Nodes
+
+- Add an **MCP Client** node.
+- Use it to **list available tools** from an MCP server.
+- Provide necessary credentials or command-line arguments to connect to your MCP server.
+- Example: Connect to a Brave Search MCP server (requires Brave API key).
+
+### 8. Obtain and Configure API Keys
+
+- For Brave Search:
+  - Sign up at Brave Search API portal.
+  - Generate an API key.
+  - Add it to your MCP server credentials or environment variables.
+
+### 9. Connect MCP Nodes to AI Agent
+
+- Add another **MCP Client** node to **execute** a selected tool.
+- Configure the AI Agent node to dynamically select and use these tools.
+- Set the operation to **Execute Tool** and specify the tool name or let the AI choose.
+
+### 10. Define System Message
+
+- In the AI Agent node, add a system prompt like:
+  > You are a helpful assistant utilizing Brave Search to perform web queries.
+
+### 11. Connect All Nodes
+
+- Ensure Chat Trigger → AI Agent → MCP Client(s) → AI Agent (response) are properly connected for smooth data flow.
+
+### 12. Test Your Workflow
+
+- Open the chat interface.
+- Ask questions like "Find Italian restaurants nearby."
+- The AI agent will decide which tool to use, perform the search, and return results.
+
+### 13. How It Works (Summary)
+
+- User sends a message.
+- AI agent interprets and decides which tool (via MCP) to use.
+- MCP client connects to external APIs (e.g., Brave Search).
+- Results are fetched and passed back to the AI agent.
+- AI agent formulates a user-friendly response.
+
+---
+
+By following these steps, you can build advanced AI-powered workflows in n8n that dynamically leverage external tools via MCP, enabling powerful automation with minimal manual coding.
