@@ -1,2 +1,4 @@
-@youtube context: https://www.youtube.com/watch?v=1QR-fz-JCA4
+1. we are going to expand on this existing n8n installation to create an MCP server (end to end) that allos me to programatically create n8n workflows from within claude  code itself. 
+
+
 
