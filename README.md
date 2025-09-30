@@ -177,3 +177,9 @@ This section explains how to supercharge your n8n workflows with AI agents and t
 ---
 
 By following these steps, you can build advanced AI-powered workflows in n8n that dynamically leverage external tools via MCP, enabling powerful automation with minimal manual coding.
+
+## n8n MCP Server
+
+A standalone MCP server for managing n8n workflows from Claude Code lives in [`mcp_n8n/`](mcp_n8n/).
+The directory contains exhaustive setup instructions, configuration samples, and Python source code for
+the server. Follow that guide after your Docker instance is running to register the tool with Claude Code.
