@@ -184,6 +184,7 @@ A standalone MCP server for managing n8n workflows from Claude Code lives in [`m
 The directory contains exhaustive setup instructions, configuration samples, and Python source code for
 the server. Follow that guide after your Docker instance is running to register the tool with Claude Code.
 
+
 ## Future Work
 
 The following tasks remain to complete the end-to-end MCP integration:
@@ -200,3 +201,4 @@ The following tasks remain to complete the end-to-end MCP integration:
    - `n8n_toggle_workflow` - Activate/deactivate workflows
    - `n8n_delete_workflow` - Delete workflows by ID
 6. **Validate end-to-end workflow creation** from within Claude Code
+
