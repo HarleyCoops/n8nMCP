@@ -177,3 +177,26 @@ This section explains how to supercharge your n8n workflows with AI agents and t
 ---
 
 By following these steps, you can build advanced AI-powered workflows in n8n that dynamically leverage external tools via MCP, enabling powerful automation with minimal manual coding.
+
+## n8n MCP Server
+
+A standalone MCP server for managing n8n workflows from Claude Code lives in [`mcp_n8n/`](mcp_n8n/).
+The directory contains exhaustive setup instructions, configuration samples, and Python source code for
+the server. Follow that guide after your Docker instance is running to register the tool with Claude Code.
+
+## Future Work
+
+The following tasks remain to complete the end-to-end MCP integration:
+
+1. **Create `.env` configuration file** in `mcp_n8n/` with n8n instance credentials
+2. **Install Python dependencies** by setting up a virtual environment and running `pip install -e .`
+3. **Obtain n8n API key** from the running Docker instance (via n8n web UI settings)
+4. **Register MCP server with Claude Code** by updating the Claude Code configuration file with the Python interpreter path and environment variables
+5. **Test the integration** using the six available tools:
+   - `n8n_list_workflows` - List all workflows
+   - `n8n_get_workflow` - Get workflow details by ID
+   - `n8n_create_workflow` - Create new workflows programmatically
+   - `n8n_update_workflow` - Update existing workflows
+   - `n8n_toggle_workflow` - Activate/deactivate workflows
+   - `n8n_delete_workflow` - Delete workflows by ID
+6. **Validate end-to-end workflow creation** from within Claude Code

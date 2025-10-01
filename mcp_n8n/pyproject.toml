@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mcp-n8n"
+version = "0.1.0"
+description = "Model Context Protocol server that manages n8n workflows"
+readme = "README.md"
+authors = [
+  { name = "n8n MCP Maintainers" }
+]
+requires-python = ">=3.10"
+dependencies = [
+  "mcp>=1.15.0",
+  "httpx>=0.27.0,<1.0",
+  "pydantic>=2.7.0,<3.0",
+  "pydantic-settings>=2.3.0,<3.0"
+]
+
+[project.optional-dependencies]
+dev = [
+  "ruff>=0.7.0",
+  "mypy>=1.13.0"
+]
+
+[project.scripts]
+n8n-mcp-server = "mcp_n8n.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
